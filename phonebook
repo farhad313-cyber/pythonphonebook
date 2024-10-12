@@ -1,0 +1,57 @@
+phonebook = {}
+
+def menu_list():
+    print("\n1. Add a New Contact ")
+    print("2. Search for a Contact ")
+    print("3. Delete a Contact ")
+    print("4. List All Contacts ")
+    print("5. Exit")
+
+def add_contact():
+    name = input("Please enter your name: ")
+    if name in phonebook:
+        print(f"{name} already exists in the phonebook.")
+    else:
+        phone = input("Please enter your phone number: ")
+        phonebook[name] = phone
+        print(f"{name} has been added.")
+
+def search_contact():
+    name = input("Please enter the name: ")
+    if name in phonebook:
+        print(f"Phone number of {name}: {phonebook[name]}")
+    else:
+        print(f"{name} not found.")
+
+def delete_contact():
+    name = input("Please enter the name you want to delete: ")
+    if name in phonebook:
+        del phonebook[name]
+        print(f"{name} has been deleted.")
+    else:
+        print(f"{name} not found.")
+
+def list_contact():
+    if phonebook:
+        print("\nAll Contacts:")
+        for name, phone in phonebook.items():
+            print(f"Name: {name}, Phone: {phone}")
+    else:
+        print("No contacts found.")
+
+while True:
+    menu_list()
+    choice = input("Choose an option (1-5): ")
+
+    if choice == '1':
+        add_contact()
+    elif choice == '2':
+        search_contact()
+    elif choice == '3':
+        delete_contact()
+    elif choice == '4':
+        list_contact()
+    elif choice == '5':
+        break
+    else:
+        print("Please enter a correct option.")
